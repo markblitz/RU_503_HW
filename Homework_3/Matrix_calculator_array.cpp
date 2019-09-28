@@ -4,12 +4,23 @@
 #include<iostream>
 
 using namespace std;
-void print_matrix(float matrix[][10], int row_number, int column_number);
+
+int Get_Matrix_Size_Row();
+int Get_Matrix_Size_Column();
+void Get_Matrix_Value(float matrix[10][10], int row_number, int column_number);
+void Matrix_Addition(float input_matrix_a[10][10], float input_matrix_b[10][10], 
+					 float output_matrix[10][10], int row_number, int column_number);
+void Matrix_Subtraction(float input_matrix_a[10][10], float input_matrix_b[10][10],
+						float output_matrix[10][10], int row_number, int column_number);
+void Print_Matrix(float matrix[10][10], int row_number, int column_number);
+
 int main() {
 
 	// variables and initialization
 	int user_choise = 0;
-
+	float input_matrix_a[10][10];
+	float input_matrix_b[10][10];
+	float output_matrix[10][10];
 	// ask input from user in the huge loop and realize each function
 	while (true) {
 		cout << "Menu \n"
@@ -20,60 +31,76 @@ int main() {
 
 		switch (user_choise) {
 		case 1:
-			cout << "1\n"; 
 			{
-				int matrix_a_size_row = 0;
-				int matrix_a_size_column = 0;
-				cout << "Please enter the number of row: ";
-				cin >> matrix_a_size_row;
-				cout << "Please enter the number of column: ";
-				cin >> matrix_a_size_column;
-				float matrix_a[10][10];
-				cout << "Please enter the values of elements: \n";
-				for (int i = 0; i < matrix_a_size_row; i++) {
-					for (int j = 0; j < matrix_a_size_column; j++) {
-						cin >> matrix_a[i][j];
-					}
-				}
-				cout << "Your input is:\n";
-				print_matrix(matrix_a, matrix_a_size_row, matrix_a_size_column);
+				int matrix_a_size_row, matrix_a_size_column;
+				matrix_a_size_row = Get_Matrix_Size_Row();
+				matrix_a_size_column = Get_Matrix_Size_Column();
 
-				int matrix_b_size_row = 0;
-				int matrix_b_size_column = 0;
+				Get_Matrix_Value(input_matrix_a, matrix_a_size_column, matrix_a_size_column);
+
+				cout << "Your input is:\n";
+				Print_Matrix(input_matrix_a, matrix_a_size_row, matrix_a_size_column);
+
+				int matrix_b_size_row, matrix_b_size_column;
 				while (true) {
-					cout << "Please enter the number of row: ";
-					cin >> matrix_b_size_row;
-					cout << "Please enter the number of column: ";
-					cin >> matrix_b_size_column;
-					if ((matrix_b_size_row != matrix_a_size_row) || (matrix_a_size_column != matrix_b_size_column)) {
+					matrix_b_size_row = Get_Matrix_Size_Row();
+					if (matrix_b_size_row != matrix_a_size_row) {
+						cout << "Dimensions of both matrices do not match!\n";
+						continue;
+					}
+					matrix_b_size_column = Get_Matrix_Size_Column();
+					if (matrix_b_size_column != matrix_a_size_column) {
 						cout << "Dimensions of both matrices do not match!\n";
 						continue;
 					}
 					break;
 				}
-				float matrix_b[10][10];
-				cout << "Please enter the values of elements: \n";
-				for (int i = 0; i < matrix_b_size_row; i++) {
-					for (int j = 0; j < matrix_b_size_column; j++) {
-						cin >> matrix_b[i][j];
-					}
-				}
+
+				Get_Matrix_Value(input_matrix_b, matrix_b_size_column, matrix_b_size_column);
+
 				cout << "Your input is:\n";
-				print_matrix(matrix_b, matrix_b_size_row, matrix_b_size_column);
+				Print_Matrix(input_matrix_b, matrix_b_size_row, matrix_b_size_column);
 
-				float matrix_c[10][10];
-				for (int i = 0; i < matrix_a_size_row; i++) {
-					for (int j = 0; j < matrix_a_size_column; j++) {
-						matrix_c[i][j] = matrix_a[i][j] + matrix_b[i][j];
-					}
-				}
+				Matrix_Addition(input_matrix_a, input_matrix_b, output_matrix, matrix_a_size_row, matrix_a_size_column);
 				cout << "The result is:\n";
-				print_matrix(matrix_c, matrix_a_size_row, matrix_a_size_column);
-
+				Print_Matrix(output_matrix, matrix_a_size_row, matrix_a_size_column);
 			}
 			continue;
 		case 2:
-			cout << "2\n";
+			{
+				int matrix_a_size_row, matrix_a_size_column;
+				matrix_a_size_row = Get_Matrix_Size_Row();
+				matrix_a_size_column = Get_Matrix_Size_Column();
+
+				Get_Matrix_Value(input_matrix_a, matrix_a_size_column, matrix_a_size_column);
+
+				cout << "Your input is:\n";
+				Print_Matrix(input_matrix_a, matrix_a_size_row, matrix_a_size_column);
+
+				int matrix_b_size_row, matrix_b_size_column;
+				while (true) {
+					matrix_b_size_row = Get_Matrix_Size_Row();
+					if (matrix_b_size_row != matrix_a_size_row) {
+						cout << "Dimensions of both matrices do not match!\n";
+						continue;
+					}
+					matrix_b_size_column = Get_Matrix_Size_Column();
+					if (matrix_b_size_column != matrix_a_size_column) {
+						cout << "Dimensions of both matrices do not match!\n";
+						continue;
+					}
+					break;
+				}
+
+				Get_Matrix_Value(input_matrix_b, matrix_b_size_column, matrix_b_size_column);
+
+				cout << "Your input is:\n";
+				Print_Matrix(input_matrix_b, matrix_b_size_row, matrix_b_size_column);
+
+				Matrix_Subtraction(input_matrix_a, input_matrix_b, output_matrix, matrix_a_size_row, matrix_a_size_column);
+				cout << "The result is:\n";
+				Print_Matrix(output_matrix, matrix_a_size_row, matrix_a_size_column);
+			}
 			continue;
 		case 3:
 			cout << "3\n";
@@ -101,7 +128,63 @@ int main() {
 	return 0;
 }
 
-void print_matrix(float matrix[][10], int row_number, int column_number)
+int Get_Matrix_Size_Row()
+{
+	int matrix_size_row = 0;
+	while (true) {
+		cout << "Please enter the number of row: ";
+		cin >> matrix_size_row;
+		if ((matrix_size_row > 0) && (matrix_size_row < 11)) {
+			break;
+		}
+		cout << "Your input is either too big or small!\n";
+	}
+	return matrix_size_row;
+}
+
+int Get_Matrix_Size_Column()
+{
+	int matrix_size_column = 0;
+	while (true) {
+		cout << "Please enter the number of column: ";
+		cin >> matrix_size_column;
+		if ((matrix_size_column > 0) && (matrix_size_column < 11)) {
+			break;
+		}
+		cout << "Your input is either too big or small!\n";
+	}
+	return matrix_size_column;
+}
+
+void Get_Matrix_Value(float matrix[10][10], int row_number, int column_number)
+{
+	cout << "Please enter the values of elements: \n";
+	for (int i = 0; i < row_number; i++) {
+		for (int j = 0; j < column_number; j++) {
+			cin >> matrix[i][j];
+		}
+	}
+}
+
+void Matrix_Addition(float input_matrix_a[10][10], float input_matrix_b[10][10], float output_matrix[10][10], int row_number, int column_number)
+{
+	for (int i = 0; i < row_number; i++) {
+		for (int j = 0; j < column_number; j++) {
+			output_matrix[i][j] = input_matrix_a[i][j] + input_matrix_b[i][j];
+		}
+	}
+}
+
+void Matrix_Subtraction(float input_matrix_a[10][10], float input_matrix_b[10][10], float output_matrix[10][10], int row_number, int column_number)
+{
+	for (int i = 0; i < row_number; i++) {
+		for (int j = 0; j < column_number; j++) {
+			output_matrix[i][j] = input_matrix_a[i][j] - input_matrix_b[i][j];
+		}
+	}
+}
+
+void Print_Matrix(float matrix[10][10], int row_number, int column_number)
 {
 	for (int i = 0; i < row_number; i++) {
 		for (int j = 0; j < column_number; j++) {
