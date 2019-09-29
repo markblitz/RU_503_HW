@@ -23,6 +23,7 @@
     <ProjectGuid>{34695561-74C1-44EF-83AB-E5663070CE49}</ProjectGuid>
     <RootNamespace>Homework3</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>Matrix_calculator_array</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

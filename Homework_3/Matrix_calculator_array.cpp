@@ -2,9 +2,11 @@
 // This is the matrix calculator for Hw 3
 
 #include<iostream>
+#include<iomanip>
 
 using namespace std;
 
+// some build-in functions
 int Get_Matrix_Size_Row();
 int Get_Matrix_Size_Column();
 void Get_Matrix_Value(float matrix[10][10], int row_number, int column_number);
@@ -15,7 +17,8 @@ void Matrix_Subtraction(float input_matrix_a[10][10], float input_matrix_b[10][1
 void Matrix_Multiplication(float input_matrix_a[10][10], float input_matrix_b[10][10],
 	float output_matrix[10][10], int row_number, int column_number, int middle_size);
 void Matrix_Transpose(float input_matrix_a[10][10], float output_matrix[10][10], int row_number, int column_number);
-float  Matrix_Determinate(float input_matrix_a[10][10]);
+float Matrix_Determinate(float input_matrix_a[10][10]);
+void Matrix_Inverse(float input_matrix_a[10][10], float output_matrix[10][10]);
 void Print_Matrix(float matrix[10][10], int row_number, int column_number);
 
 int main() {
@@ -37,7 +40,7 @@ int main() {
 		switch (user_choise) {
 
 		case 1:
-			{
+			{	// in this array case, because of the properties of array, size of each matrix needs to be sent into functions
 				int matrix_a_size_row, matrix_a_size_column;
 				matrix_a_size_row = Get_Matrix_Size_Row();
 				matrix_a_size_column = Get_Matrix_Size_Column();
@@ -47,6 +50,7 @@ int main() {
 				cout << "Your input is:\n";
 				Print_Matrix(input_matrix_a, matrix_a_size_row, matrix_a_size_column);
 
+				// do some size check here for matrix 2
 				int matrix_b_size_row, matrix_b_size_column;
 				while (true) {
 					matrix_b_size_row = Get_Matrix_Size_Row();
@@ -189,7 +193,38 @@ int main() {
 			continue;
 
 		case 6:
-			cout << "6\n";
+			{
+				int matrix_a_size_row, matrix_a_size_column;
+				while (true) {
+					matrix_a_size_row = Get_Matrix_Size_Row();
+					if (matrix_a_size_row != 3) {
+						cout << "Matrix size not supported\n";
+						continue;
+					}
+					matrix_a_size_column = Get_Matrix_Size_Column();
+					if (matrix_a_size_column != 3) {
+						cout << "Matrix size not supported\n";
+						continue;
+					}
+					break;
+				}
+
+				Get_Matrix_Value(input_matrix_a, matrix_a_size_row, matrix_a_size_column);
+
+				cout << "Your input is:\n";
+				Print_Matrix(input_matrix_a, matrix_a_size_row, matrix_a_size_column);
+
+				float determinate = Matrix_Determinate(input_matrix_a);
+				if (determinate == 0) {
+					cout << "This matrix may not be invertable!\n";
+					continue;
+				}
+
+				Matrix_Inverse(input_matrix_a, output_matrix);
+				cout << "The result is:\n";
+				Print_Matrix(output_matrix, matrix_a_size_column, matrix_a_size_row);
+
+			}
 			continue;
 
 		case 7:
@@ -299,11 +334,37 @@ float Matrix_Determinate(float input_matrix_a[10][10])
 	return determinate;
 }
 
+void Matrix_Inverse(float input_matrix_a[10][10], float output_matrix[10][10])
+{	// this inverse algorithm is not the best
+	// since I am only asked to do 3 by 3 matrix, this would be easier
+	float determinate = Matrix_Determinate(input_matrix_a);
+
+	float cofactor_matrix[3][3] = {0, 0, 0, 0, 0, 0, 0, 0, 0};
+	cofactor_matrix[0][0] = input_matrix_a[1][1] * input_matrix_a[2][2] - input_matrix_a[1][2] * input_matrix_a[2][1];
+	cofactor_matrix[0][1] = input_matrix_a[1][2] * input_matrix_a[2][0] - input_matrix_a[1][0] * input_matrix_a[2][2];
+	cofactor_matrix[0][2] = input_matrix_a[1][0] * input_matrix_a[2][1] - input_matrix_a[1][1] * input_matrix_a[2][0];
+	cofactor_matrix[1][0] = input_matrix_a[2][1] * input_matrix_a[0][2] - input_matrix_a[2][2] * input_matrix_a[0][1];
+	cofactor_matrix[1][1] = input_matrix_a[2][2] * input_matrix_a[0][0] - input_matrix_a[2][0] * input_matrix_a[0][2];
+	cofactor_matrix[1][2] = input_matrix_a[2][0] * input_matrix_a[0][1] - input_matrix_a[2][1] * input_matrix_a[0][0];
+	cofactor_matrix[2][0] = input_matrix_a[0][1] * input_matrix_a[1][2] - input_matrix_a[0][2] * input_matrix_a[1][1];
+	cofactor_matrix[2][1] = input_matrix_a[0][2] * input_matrix_a[1][0] - input_matrix_a[0][0] * input_matrix_a[1][2];
+	cofactor_matrix[2][2] = input_matrix_a[0][0] * input_matrix_a[1][1] - input_matrix_a[0][1] * input_matrix_a[1][0];
+
+	float adjoint_matrix[3][3] = { 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+	
+	for (int i = 0; i < 3; i++) {
+		for (int j = 0; j < 3; j++) {
+			adjoint_matrix[i][j] = cofactor_matrix[j][i];
+			output_matrix[i][j] = adjoint_matrix[i][j] / determinate;
+		}
+	}
+}
+
 void Print_Matrix(float matrix[10][10], int row_number, int column_number)
 {
 	for (int i = 0; i < row_number; i++) {
 		for (int j = 0; j < column_number; j++) {
-			cout << matrix[i][j] << " ";;
+			cout <<setw(10) << matrix[i][j];
 		}
 		cout << endl;
 	}
