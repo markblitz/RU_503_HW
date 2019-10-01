@@ -1,1 +1,3 @@
-﻿
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(452,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (Homework_3.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  Matrix_calculator_array.cpp
+  Homework_3.vcxproj -> C:\Users\blitz\Source\Repos\markblitz\RU_503_HW\Homework_3\Debug\Matrix_calculator_array.exe
