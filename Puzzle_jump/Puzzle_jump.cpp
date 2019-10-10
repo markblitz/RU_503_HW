@@ -60,7 +60,7 @@ bool Solve_Puzzle(int puzzle[], int starting_index)
 int main() {
 
 	int puzzle[5] = { 3, 2, 1, 3, 0 };
-	bool if_solvable = Solve_Puzzle(puzzle, 0);
+	bool if_solvable = Solve_Puzzle(puzzle, 1);
 
 	if (if_solvable) {
 		cout << "This puzzle is solvable!\n";
