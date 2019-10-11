@@ -17,7 +17,7 @@ bool Solve_Puzzle(int puzzle[], int starting_index)
 	/* Since I am asked to take two parameters for this function, an array and an integer,
 	   this loop is used to get the length of array,
 	   do this meaningless job in every call... SAD */
-
+	
 	while (true) {							
 		if (puzzle[array_length] == 0) {	
 			break;							
@@ -25,15 +25,19 @@ bool Solve_Puzzle(int puzzle[], int starting_index)
 		array_length++;
 	}
 
+	// if the value is 0, this puzzle is solvable
 	if (puzzle[starting_index] == 0) {
 	//	cout << "touch end!\n";
 		return true;
 	}
+	
+	// if the value is -1, this puzzle is not solvable
 	if (puzzle[starting_index] == -1) {
 	//	cout << "touch before!\n";
 		return false;
 	}
 
+	// move left or right, if at any step the puzzle becomes solvable, return solvable
 	if ((starting_index - step) >= 0) {
 	//	cout << "start at " << starting_index << " with value " << puzzle[starting_index] << endl;
 	//	cout << "move left " << step << endl;
@@ -59,8 +63,8 @@ bool Solve_Puzzle(int puzzle[], int starting_index)
 
 int main() {
 
-	int puzzle[5] = { 3, 2, 1, 3, 0 };
-	bool if_solvable = Solve_Puzzle(puzzle, 1);
+	int puzzle[10] = { 3,6,4,1,3,4,2,5,3,0 };
+	bool if_solvable = Solve_Puzzle(puzzle, 0);
 
 	if (if_solvable) {
 		cout << "This puzzle is solvable!\n";
