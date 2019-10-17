@@ -1,8 +1,8 @@
 # RU_503_HW
-Collection of 503 homework by Yiming
+Collection of 503 homework by Yiming  
 Commits updates with grades returned.
 
-HW1
+HW1  
 Compare five numbers, find min and max... easy.
 
 HW2
