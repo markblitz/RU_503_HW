@@ -33,8 +33,59 @@ void Polynomial::Set_Polynomial()
 	}
 }
 
+void Polynomial::operator+=(const Polynomial& poly)
+{
+	for (int i = 0; i < 13; i++) {
+//		cout << inner_array[i] << " " << inner_array[i] << " " << poly.inner_array[i] << " ";
+		inner_array[i] += poly.inner_array[i];
+//		cout << inner_array[i] << endl;
+	}
+}
+
+void Polynomial::operator-=(const Polynomial& poly)
+{
+	for (int i = 0; i < 13; i++) {
+	//	cout << inner_array[i] << " " << inner_array[i] << " " << poly.inner_array[i] << " ";
+		inner_array[i] -= poly.inner_array[i];
+	//	cout << inner_array[i] << endl;
+	}
+}
+
+void Polynomial::operator*=(const Polynomial& poly)
+{
+	Polynomial output, temp, zero;
+	for (int i = 0; i < 13; i++) {
+		if (inner_array[i] != 0) {
+			temp = zero;
+			for (int j = 0; j < 13; j++) {	
+				if (poly.inner_array[j] != 0) {
+					temp.inner_array[i + j] = inner_array[i] * poly.inner_array[j];
+//					cout << i + j << " " << inner_array[i] << " " << poly.inner_array[j] << endl;
+				}
+			}
+//			cout << temp << endl;
+			output += temp;
+		}
+	}
+	for (int i = 0; i < 13; i++) {
+		inner_array[i] = output.inner_array[i];
+	}
+
+}
+
+void Polynomial::operator=(const Polynomial& poly)
+{
+//	cout << "= is used\n";
+	for (int i = 0; i < 13; i++) {
+	//	cout << inner_array[i] << " " << inner_array[i] << " " << poly.inner_array[i] << " ";
+		inner_array[i] = poly.inner_array[i];
+	//	cout << inner_array[i] << endl;
+	}
+}
+
 Polynomial Polynomial::operator+(const Polynomial& poly)
 {
+//	cout << "+ is used\n";
 	Polynomial output;
 	for (int i = 0; i < 13; i++) {
 		output.inner_array[i] = inner_array[i] + poly.inner_array[i];
@@ -44,18 +95,29 @@ Polynomial Polynomial::operator+(const Polynomial& poly)
 
 Polynomial Polynomial::operator-(const Polynomial& poly)
 {
+//	cout << "- is used\n";
 	Polynomial output;
-	for (int i = 0; i < 7; i++) {
+	for (int i = 0; i < 13; i++) {
 		output.inner_array[i] = inner_array[i] - poly.inner_array[i];
 	}
 	return output;
 }
 
-Polynomial Polynomial::operator=(const Polynomial& poly)
+Polynomial Polynomial::operator*(const Polynomial& poly)
 {
-	Polynomial output;
-	for (int i = 0; i < 7; i++) {
-		output.inner_array[i] = poly.inner_array[i];
+	Polynomial output, temp, zero;
+	for (int i = 0; i < 13; i++) {
+		if (inner_array[i] != 0) {
+			temp = zero;
+			for (int j = 0; j < 13; j++) {
+				if (poly.inner_array[j] != 0) {
+					temp.inner_array[i + j] = inner_array[i] * poly.inner_array[j];
+//					cout << i + j << " " << inner_array[i] << " " << poly.inner_array[j] << endl;
+				}
+			}
+//			cout << temp << endl;
+			output += temp;
+		}
 	}
 	return output;
 }
@@ -68,7 +130,7 @@ ostream& operator<<(ostream& output, const Polynomial& poly)
 			print_counter++;
 		}
 	}
-
+//	cout << print_counter << endl;
 	if (print_counter == 0) {
 		cout << "0\n";
 	}
@@ -78,14 +140,18 @@ ostream& operator<<(ostream& output, const Polynomial& poly)
 				output << poly.inner_array[i];
 				print_counter--;
 				if (i == 0) {
-					cout << "x";
-					if (print_counter == 0) { cout << endl; }
-					else { cout << " + "; }
+					if (print_counter == 0) { output << endl; }
+					else { output << " + "; }
+				}
+				else if (i == 1) {
+					output << "x";
+					if (print_counter == 0) { output << endl; }
+					else { output << " + "; }
 				}
 				else {
-					cout << "x^" << i;
-					if (print_counter == 0) { cout << endl; }
-					else { cout << " + "; }
+					output << "x^" << i;
+					if (print_counter == 0) { output << endl; }
+					else { output << " + "; }
 				}
 			}
 		}
