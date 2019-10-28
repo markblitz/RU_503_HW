@@ -2,15 +2,17 @@
 using namespace std;
 #include "Polynomial_Yiming_Bi.h"
 
-Polynomial::Polynomial()
+Polynomial::Polynomial()	// this function is used to initialize
 {
 	for (int i = 0; i < 13; i++) {
 		inner_array[i] = 0;
 	}
 }
 
-void Polynomial::Set_Polynomial()
+// this function is used to set a polynomial object
+void Polynomial::Set_Polynomial()	
 {
+	// ask polynomial term number
 	cout << "Enter the number of polynomial trems: ";
 	int term_number = 0;
 	cin >> term_number;
@@ -19,6 +21,7 @@ void Polynomial::Set_Polynomial()
 		cout << "Enter coefficient and exponent: ";
 		int coefficient, exponent;
 		cin >> coefficient >> exponent;
+		// some input check
 		if ((exponent > 6) || (exponent < 0)) {
 			cout << "Invalid exponent number! The latest input line does not count!\n";
 			i--;
@@ -29,10 +32,24 @@ void Polynomial::Set_Polynomial()
 			inner_array[exponent - 1] += coefficient;
 			continue;
 		}
+		// assign coefficient to certain place
 		inner_array[exponent] = coefficient;
 	}
 }
 
+// set function for single position
+void Polynomial::Set_Coefficient(int& coefficient, int& exponent)
+{
+	inner_array[exponent] = coefficient;
+}
+
+// get function for single position
+int Polynomial::Get_Coefficient(int& exponent)
+{
+	return inner_array[exponent];
+}
+
+// for +=, -=, and =, do operation postion by positon 
 void Polynomial::operator+=(const Polynomial& poly)
 {
 	for (int i = 0; i < 13; i++) {
@@ -51,6 +68,7 @@ void Polynomial::operator-=(const Polynomial& poly)
 	}
 }
 
+// to multiplication position by position, then add temp results together
 void Polynomial::operator*=(const Polynomial& poly)
 {
 	Polynomial output, temp, zero;
@@ -136,6 +154,7 @@ ostream& operator<<(ostream& output, const Polynomial& poly)
 	}
 	else {
 		for (int i = 0; i < 13; i++) {
+			// some special output check
 			if (poly.inner_array[i] != 0) {
 				output << poly.inner_array[i];
 				print_counter--;

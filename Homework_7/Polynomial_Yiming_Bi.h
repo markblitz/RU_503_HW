@@ -6,6 +6,8 @@ class Polynomial
 public:
 	Polynomial();
 	void Set_Polynomial();
+	void Set_Coefficient(int&, int&);
+	int Get_Coefficient(int&);
 	void operator+=(const Polynomial&);
 	void operator-=(const Polynomial&); 
 	void operator*=(const Polynomial&);
