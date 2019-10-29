@@ -5,6 +5,7 @@ class Polynomial
 {
 public:
 	Polynomial();
+	~Polynomial();
 	void Set_Polynomial();
 	void Set_Coefficient(int&, int&);
 	int Get_Coefficient(int&);

@@ -9,6 +9,11 @@ Polynomial::Polynomial()	// this function is used to initialize
 	}
 }
 
+Polynomial::~Polynomial()
+{
+//	cout << "Polynomial destructor. " << endl;
+}
+
 // this function is used to set a polynomial object
 void Polynomial::Set_Polynomial()	
 {
