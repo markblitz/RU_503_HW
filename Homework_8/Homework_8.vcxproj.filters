@@ -18,9 +18,24 @@
     <ClCompile Include="Shape_Yiming_Bi.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="TwoD_Shape_Yiming_Bi.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Circle_Yiming_Bi.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="main_Yiming_Bi.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Shape_Yiming_Bi.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="TwoD_Shape_Yiming_Bi.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Circle_Yiming_Bi.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

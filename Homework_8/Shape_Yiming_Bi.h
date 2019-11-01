@@ -3,17 +3,18 @@
 class Shape
 {
 public:
-	Shape(int&, int&);
+	Shape();
 	~Shape();
-	void Set_X(int&);
-	void Set_Y(int&);
-	int Get_X();
-	int Get_Y();
+	void Set_X(double);
+	void Set_Y(double);
+	double Get_X() const;
+	double Get_Y() const;
+	void Print_Center() const;
 
 private:
 	// center of shape in (x,y) form
-	int center_x;
-	int center_y;
+	double center_x;
+	double center_y;
 };
 
 #endif

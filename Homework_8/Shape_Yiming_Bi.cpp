@@ -1,9 +1,13 @@
+#include <iostream>
+
+using namespace std;
+
 #include "Shape_Yiming_Bi.h"
 
-Shape::Shape(int& input_x, int& input_y)
+Shape::Shape()
 {
-	center_x = input_x;
-	center_y = input_y;
+	Set_X(0);
+	Set_Y(0);
 }
 
 Shape::~Shape()
@@ -11,22 +15,27 @@ Shape::~Shape()
 	// nothing I may do here...
 }
 
-void Shape::Set_X(int& input_x)
+void Shape::Set_X(double input_x)
 {
 	center_x = input_x;
 }
 
-void Shape::Set_Y(int& input_y)
+void Shape::Set_Y(double input_y)
 {
 	center_y = input_y;
 }
 
-int Shape::Get_X()
+double Shape::Get_X() const
 {
 	return center_x;
 }
 
-int Shape::Get_Y()
+double Shape::Get_Y() const
 {
 	return center_y;
+}
+
+void Shape::Print_Center() const
+{
+	cout << "(" << Get_X() << "," << Get_Y() << ")";
 }
