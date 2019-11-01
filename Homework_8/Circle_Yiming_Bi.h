@@ -8,8 +8,8 @@ class Circle :
 public:
 	Circle();
 	~Circle();
-	void Set_radius(double);
-	double Get_radius() const;
+	void Set_Radius(double);
+	double Get_Radius() const;
 	virtual double Get_Area() const;
 	virtual void Print() const;
 private:

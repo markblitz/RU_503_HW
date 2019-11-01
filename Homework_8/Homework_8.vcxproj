@@ -126,11 +126,19 @@
     <ClCompile Include="Circle_Yiming_Bi.cpp" />
     <ClCompile Include="main_Yiming_Bi.cpp" />
     <ClCompile Include="Shape_Yiming_Bi.cpp" />
+    <ClCompile Include="Sphere_Yiming_Bi.cpp" />
+    <ClCompile Include="Tetrahedron_Yiming_Bi.cpp" />
+    <ClCompile Include="ThreeD_Shape_Yiming_Bi.cpp" />
+    <ClCompile Include="Triangle_Yiming_Bi.cpp" />
     <ClCompile Include="TwoD_Shape_Yiming_Bi.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Circle_Yiming_Bi.h" />
     <ClInclude Include="Shape_Yiming_Bi.h" />
+    <ClInclude Include="Sphere_Yiming_Bi.h" />
+    <ClInclude Include="Tetrahedron_Yiming_Bi.h" />
+    <ClInclude Include="ThreeD_Shape_Yiming_Bi.h" />
+    <ClInclude Include="Triangle_Yiming_Bi.h" />
     <ClInclude Include="TwoD_Shape_Yiming_Bi.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

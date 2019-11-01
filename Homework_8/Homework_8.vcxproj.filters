@@ -27,6 +27,18 @@
     <ClCompile Include="main_Yiming_Bi.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="Triangle_Yiming_Bi.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ThreeD_Shape_Yiming_Bi.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Sphere_Yiming_Bi.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Tetrahedron_Yiming_Bi.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Shape_Yiming_Bi.h">
@@ -36,6 +48,18 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="Circle_Yiming_Bi.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Triangle_Yiming_Bi.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ThreeD_Shape_Yiming_Bi.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Sphere_Yiming_Bi.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Tetrahedron_Yiming_Bi.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

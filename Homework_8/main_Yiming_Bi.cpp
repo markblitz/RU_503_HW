@@ -3,6 +3,9 @@
 using namespace std;
 
 #include "Circle_Yiming_Bi.h"
+#include "Triangle_Yiming_Bi.h"
+#include "Sphere_Yiming_Bi.h"
+#include "Tetrahedron_Yiming_Bi.h"
 
 int main() {
 
@@ -28,7 +31,63 @@ int main() {
 			cout <<endl << "Please enter the radius of the circle:\n";
 			double input_radius;
 			cin >> input_radius;
-			A.Set_radius(input_radius);
+			A.Set_Radius(input_radius);
+			cout << endl;
+			A.Print();
+			continue;
+		}
+
+		case 2:
+		{
+			Triangle A;
+			cout << "You have chosen the triangle.\n" << endl;
+			cout << "Please enter the center of the triangle (x-coordinate and then y-coordinate):\n";
+			double input_x, input_y;
+			cin >> input_x >> input_y;
+			A.Set_X(input_x);
+			A.Set_Y(input_y);
+			cout << endl << "Please enter the edge length of the triangle:\n";
+			double input_edge;
+			cin >> input_edge;
+			A.Set_Edge(input_edge);
+			cout << endl;
+			A.Print();
+			continue;
+		}
+
+		case 3:
+		{
+			Sphere A;
+			cout << "You have chosen the sphere.\n" << endl;
+			cout << "Please enter the center of the sphere (x-coordinate, y-coordinate, then z-coordinate):\n";
+			double input_x, input_y, input_z;
+			cin >> input_x >> input_y >> input_z;
+			A.Set_X(input_x);
+			A.Set_Y(input_y);
+			A.Set_Z(input_z);
+			cout << endl << "Please enter the radius of the sphere:\n";
+			double input_radius;
+			cin >> input_radius;
+			A.Set_Radius(input_radius);
+			cout << endl;
+			A.Print();
+			continue;
+		}
+
+		case 4:
+		{
+			Tetrahedron A;
+			cout << "You have chosen the tetrahedron.\n" << endl;
+			cout << "Please enter the center of the tetrahedron (x-coordinate, y-coordinate, then z-coordinate):\n";
+			double input_x, input_y, input_z;
+			cin >> input_x >> input_y >> input_z;
+			A.Set_X(input_x);
+			A.Set_Y(input_y);
+			A.Set_Z(input_z);
+			cout << endl << "Please enter the edge length of the tetrahedron:\n";
+			double input_edge;
+			cin >> input_edge;
+			A.Set_Edge(input_edge);
 			cout << endl;
 			A.Print();
 			continue;
