@@ -4,11 +4,6 @@ using namespace std;
 
 Customer::Customer()
 {
-	Set_Name("");
-	Set_Address("");
-	Set_City("");
-	Set_State("");
-	Set_Zip("");
 }
 
 Customer::Customer(string input_name, string input_address,

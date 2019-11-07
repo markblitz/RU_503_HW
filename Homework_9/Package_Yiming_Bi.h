@@ -4,6 +4,7 @@
 class Package
 {
 public:
+	Package();
 	Package(const Customer&, const Customer&, double, double);
 	~Package();
 	void Set_Weight(double);
@@ -12,9 +13,9 @@ public:
 	void Set_Recipient(const Customer&);
 	double Get_Weight() const;
 	double Get_Cost() const;
-	double Calculate_Cost() const;
 	void Print_Sender() const;
 	void Print_Recipient() const;
+	virtual double Calculate_Cost() const;
 	virtual void Print_Package() const;
 
 private:

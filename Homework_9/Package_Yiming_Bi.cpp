@@ -2,6 +2,10 @@
 #include <iostream>
 using namespace std;
 
+Package::Package()
+{
+}
+
 Package::Package(const Customer& input_sender, const Customer& input_recipient, double input_weight, double input_cost)
 {
 	Set_Sender(input_sender);

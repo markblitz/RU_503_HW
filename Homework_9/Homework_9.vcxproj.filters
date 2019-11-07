@@ -24,12 +24,18 @@
     <ClCompile Include="main_Yiming_Bi.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="TwoDayPackage_Yiming_Bi.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Package_Yiming_Bi.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="Customer_Yiming_Bi.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="TwoDayPackage_Yiming_Bi.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
