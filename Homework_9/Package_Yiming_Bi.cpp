@@ -1,4 +1,6 @@
 #include "Package_Yiming_Bi.h"
+#include <iostream>
+using namespace std;
 
 Package::Package(const Customer& input_sender, const Customer& input_recipient, double input_weight, double input_cost)
 {
@@ -56,4 +58,15 @@ void Package::Print_Sender() const
 void Package::Print_Recipient() const
 {
 	recipient.Print();
+}
+
+void Package::Print_Package() const
+{
+	cout << "Sender:\n";
+	Print_Sender();
+	cout << endl << "Recipient:\n";
+	Print_Recipient();
+	cout << endl << "Weight of package: " << Get_Weight() << " ounces\n";
+	cout << "Type if delivery: Regular Delivery\n";
+	cout << "Cost of package: $" << Calculate_Cost() << endl;
 }

@@ -15,7 +15,7 @@ public:
 	double Calculate_Cost() const;
 	void Print_Sender() const;
 	void Print_Recipient() const;
-	void Print_Package() const;
+	virtual void Print_Package() const;
 
 private:
 	Customer sender, recipient;
