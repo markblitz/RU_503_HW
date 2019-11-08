@@ -4,6 +4,7 @@ using namespace std;
 
 TwoDayPackage::TwoDayPackage()
 {
+	flat_cost = 0;
 }
 
 TwoDayPackage::TwoDayPackage(const Customer& input_sender, const Customer& input_recipient,

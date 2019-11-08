@@ -4,6 +4,9 @@ using namespace std;
 
 Package::Package()
 {
+	weight = 0;	cost_per_ounce = 0;
+	Set_Sender(Customer());
+	Set_Recipient(Customer());
 }
 
 Package::Package(const Customer& input_sender, const Customer& input_recipient, double input_weight, double input_cost)
@@ -21,12 +24,24 @@ Package::~Package()
 
 void Package::Set_Weight(double input_weight)
 {
-	weight = input_weight;
+	if(input_weight <= 0) {
+		cout << "Your input weight is negative or zero! Please set later again!\n";
+		weight = -1;
+	}
+	else {
+		weight = input_weight;
+	}
 }
 
 void Package::Set_Cost(double input_cost)
 {
-	cost_per_ounce = input_cost;
+	if (input_cost <= 0) {
+		cout << "Your input cost is negative or zero! Please set later again!\n";
+		cost_per_ounce = -1;
+	}
+	else {
+		cost_per_ounce = input_cost;
+	}
 }
 
 void Package::Set_Sender(const Customer& input_sender)

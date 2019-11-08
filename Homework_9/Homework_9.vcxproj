@@ -125,11 +125,13 @@
   <ItemGroup>
     <ClCompile Include="Customer_Yiming_Bi.cpp" />
     <ClCompile Include="main_Yiming_Bi.cpp" />
+    <ClCompile Include="OverNightPackage_Yiming_Bi.cpp" />
     <ClCompile Include="Package_Yiming_Bi.cpp" />
     <ClCompile Include="TwoDayPackage_Yiming_Bi.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Customer_Yiming_Bi.h" />
+    <ClInclude Include="OverNightPackage_Yiming_Bi.h" />
     <ClInclude Include="Package_Yiming_Bi.h" />
     <ClInclude Include="TwoDayPackage_Yiming_Bi.h" />
   </ItemGroup>
